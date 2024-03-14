@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+
+        /* .Box1 img{
+
+            width: 200px;
+        } */
+    </style>
+</head>
+<body>
+    
+
+    <div class="coverImg">
+
+        <img src="https://w7.pngwing.com/pngs/596/791/png-transparent-vegetables-on-beige-wicker-basket-x-o-produce-inc-organic-food-vegetable-cooking-fresh-fruits-and-vegetables-natural-foods-leaf-vegetable-food-thumbnail.png" alt="">
+    </div>
+
+    <h1 class="heading">Our Deals!</h1>
+
+
+    <div class="Container">
+
+
+    </div>
+
+    <script>
+
+
+var Container=document.querySelector('.Container')
+
+// var pizzIMG='https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_1280.jpg'
+// var burgerImg='https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg'
+// var shawrmaIMG='https://www.foodandwine.com/thmb/iA0DXcPUIhjvjwbq0mpJCusturs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/shawarma-style-chicken-and-mushroom-kebabs-2-ft-recipe0620-30989aaf6b3649308861aac270f49d1d.jpg'
+// var rollsImg='https://recipesaresimple.com/wp-content/uploads/2023/04/Chicken-and-Vegetable-Spring-Rolls-with-Homemade-Spring-Roll-Wrappers.jpg'
+
+// var pictures = [
+//             { Price: 201, title: 'Pizza', IMG: pizzIMG },
+//             { Price: 250, title: 'Chicken Rolls', IMG: rollsImg },
+
+//             { Price: 300, title: 'burger', IMG: burgerImg },
+//             { Price: 150, title: 'Shawrma', IMG: shawrmaIMG },
+//             { Price: 350, title: 'burger', IMG: burgerImg },
+//             { Price: 170, title: 'Shawrma', IMG: shawrmaIMG },
+
+
+//             { Price: 290, title: 'Chicken Rolls', IMG: rollsImg },
+//             { Price: 400, title: 'burger', IMG: burgerImg },
+//             { Price: 288, title: 'burger', IMG: burgerImg },
+//             { Price: 292, title: 'Chicken Rolls', IMG: rollsImg },
+
+
+//             { Price: 178, title: 'Shawrma', IMG: shawrmaIMG },
+
+
+//             { Price: 295, title: 'Chicken Rolls', IMG: rollsImg },
+//             { Price: 880, title: 'burger', IMG: burgerImg },
+//             { Price: 285, title: 'Chicken Rolls', IMG: rollsImg },
+
+
+
+
+
+            
+//         ];
+
+// for(let i=0; i<=10; i++){
+
+//     Container.innerHTML+=`<div class='card'> <img src=${pictures[i].IMG} width='100%'>
+        
+//         <h2>Rs.${pictures[i].Price} </h2>
+//         <p>${pictures[i].title} </p>
+
+
+
+        
+//         </div>`
+
+//         Container.style.display='flex'
+//         Container.style.flexWrap='wrap'
+// }
+
+
+var Container = document.querySelector('.Container');
+
+fetch('https://dummyjson.com/products')
+    .then(res => res.json())
+    .then(data => {
+        var pictures = data.products;
+
+        for (let i = 0; i < 10 && i < pictures.length; i++) {
+            Container.innerHTML += `<div class='card'> 
+                                        <img src=${pictures[i].images[0]} width='100%'>
+                                        <h2>Rs.${pictures[i].price}</h2>
+                                        <p>${pictures[i].title}</p>
+                                    </div>`;
+        }
+
+        Container.style.display = 'flex';
+        Container.style.flexWrap = 'wrap';
+    })
+    .catch(error => console.error('Error fetching data:', error));
+
+
+
+    </script>
+</body>
+</html>
